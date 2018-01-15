@@ -1,0 +1,13 @@
+<mat-card class="text-center">
+  <img [src]="thumbnail" class="building-img" alt="" />
+  <h5 class="m-t-15">{{ data.name }}</h5>
+  <ul>
+    <li *ngFor="let resource of data.resources">
+      <img [src]="getResourceIconPath(resource.name)">
+      <span>{{ resource.amount }}</span>
+    </li>
+  </ul>
+  <button *ngIf="!isBuilt" [disabled]="isDisabled" (click)="build.emit(data.id)" mat-raised-button color="primary"
+    class="btn-primary m-t-10">Build</button>
+  <button *ngIf="isBuilt" mat-raised-button class="m-t-10">Purchased</button>
+</mat-card>

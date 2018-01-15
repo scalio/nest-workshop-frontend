@@ -1,0 +1,20 @@
+<div class="container m-t-30">
+  <div class="logo-wrapper">
+    <img src="/assets/images/ngatl.svg" alt="" />
+  </div>
+  <div class="form-wrapper">
+    <mat-card>
+      <h3>Sign in</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()" novalidate>
+        <mat-form-field class="input-wrapper">
+          <input formControlName="username" matInput placeholder="Login">
+        </mat-form-field>
+        <mat-form-field class="input-wrapper">
+          <input formControlName="password" type="password" matInput placeholder="Password">
+        </mat-form-field>
+        <button [disabled]="isSubmitDisabled" type="submit" mat-raised-button color="primary" class="btn-primary">Sign In</button>
+      </form>
+      <p class="copyright">Copyright © <strong>Nest</strong> ngAtl workshop 2018</p>
+    </mat-card>
+  </div>
+</div>

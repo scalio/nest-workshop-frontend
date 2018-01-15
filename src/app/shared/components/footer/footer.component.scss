@@ -1,0 +1,22 @@
+.page-footer {
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #9d9d9d;
+  background: #f5f5f5;
+
+  p {
+    margin: 0;
+    span {
+      color: #e3244a;
+      font-weight: 600;
+    }
+  }
+
+  img {
+    width: 20px;
+    margin: 0 5px;
+  }
+}

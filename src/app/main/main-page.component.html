@@ -1,0 +1,39 @@
+<header class="page-header clearfix">
+  <div class="container">
+    <h3 class="p-25 m-0 d-inline-block">Level up your Node.js application with Nest: Angular sugar on the server</h3>
+    <img src="/assets/images/ngatl.svg" class="logo float-right" alt="" />
+  </div>
+</header>
+<div class="container">
+  <div class="page-wrapper">
+    <mat-tab-group>
+      <mat-tab label="Buildings">
+        <div class="row">
+          <div class="col-md-3 item-building" *ngFor="let item of (buildings | async)">
+            <app-building [isBuilt]="item.isBuilt" [isDisabled]="item.isDisabled" [data]="item" (build)="handleBuild($event)"></app-building>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Resources">
+        <mat-table #table [dataSource]="dataSource">
+          <ng-container matColumnDef="icon">
+            <mat-header-cell *matHeaderCellDef> Icon </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <img [src]="getResourceIconPath(element.name)"> </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </mat-tab>
+    </mat-tab-group>
+    <button (click)="logout()" mat-raised-button class="m-t-10">Logout</button>
+  </div>
+</div>

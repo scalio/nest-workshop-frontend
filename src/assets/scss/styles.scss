@@ -1,0 +1,45 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
+
+@import './../plugins/bootstrap/bootstrap.scss';
+@import './app.scss';
+
+$typography: mat-typography-config(
+    $font-family: 'Montserrat'
+);
+
+@include angular-material-typography($typography);
+
+.mat-form-field-underline {
+  background-color: rgba(179, 179, 179, 0.42);
+}
+
+.toast-container .toast {
+  padding: 15px;
+  width: 250px;
+  background-image: none !important;
+}
+
+.toast-error {
+  background-color: #e3244a;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.toast-success {
+  background-color: #424242;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+button {
+  outline: 0 !important;
+}
+
+.toast-title {
+  font-weight: 600;
+}
+
+.toast-message {
+  font-size: 12px;
+}
