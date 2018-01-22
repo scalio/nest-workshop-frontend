@@ -9,14 +9,10 @@ const signedUser = { id: userFixture.id, username: userFixture.username };
 
 const getSignedUser = () =>
   success({
-    access_token: jwt.sign(signedUser, 'secret', {
+    access_token: jwt.sign(signedUser, 'ngAtl-workshop', {
       expiresIn: '24h',
     }),
-    expires: (() => {
-      const date = new Date();
-      date.setDate(date.getDate() + 1);
-      return date.getTime();
-    })(),
+    expires_in: 86400,
   });
 
 const router = express.Router();

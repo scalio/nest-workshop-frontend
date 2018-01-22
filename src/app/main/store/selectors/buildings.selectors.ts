@@ -18,7 +18,7 @@ export const mergeBuildingsAndResources = createSelector(
     return map(buildings, item => ({
       ...item,
       resources: (item.resources || []).map(resource =>
-        merge(resource, resources[resource.id]),
+        merge(resource, resources.find(res => res.id === resource.id)),
       ),
     }));
   },

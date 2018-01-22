@@ -36,7 +36,7 @@ export class AuthService {
       .post<ApiResponse<AuthTokenDto>>(url, loginUserDto)
       .switchMap((authTokenDto: ApiResponse<AuthTokenDto>) => {
         const { data } = authTokenDto;
-        this.localStorageService.setObject(USER_TOKEN_KEY, data);
+        this.storeTokenInMemory(data);
         return this.fetchUserDetails();
       });
   }
@@ -64,7 +64,6 @@ export class AuthService {
       .map(user => !isNil(user))
       .take(1)
       .toPromise();
-
     if (isAuthenticated) {
       return true;
     }
@@ -78,13 +77,23 @@ export class AuthService {
   }
 
   async isAuthenticatedInMemory(): Promise<boolean> {
-    const token = this.localStorageService.getObject<AuthTokenDto>(
-      USER_TOKEN_KEY,
-    );
+    const token = this.localStorageService.getObject<{
+      access_token: string;
+      expires: number;
+    }>(USER_TOKEN_KEY);
     return token.access_token ? await this.validateToken(token) : false;
   }
 
-  async validateToken(token: AuthTokenDto): Promise<boolean> {
+  storeTokenInMemory(data: AuthTokenDto) {
+    const { access_token, expires_in } = data;
+    const expires = Date.now() + expires_in * 1000;
+    this.localStorageService.setObject(USER_TOKEN_KEY, { access_token, expires });
+  }
+
+  async validateToken(token: {
+    access_token: string;
+    expires: number;
+  }): Promise<boolean> {
     const { expires } = token;
     return expires > new Date().getTime();
   }

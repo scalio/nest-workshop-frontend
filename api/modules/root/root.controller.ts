@@ -28,11 +28,15 @@ router.post('/me/buildings', async (req, res, next) => {
   try {
     const { resources } = building;
     const userResources = userFixture.resources;
+
     resources.forEach((resource) => {
       const userResource = userResources.find((item) => item.id === resource.id);
       if (userResource.amount < resource.amount) {
         throw new Error('Not enough resources');
       }
+    });
+    resources.forEach((resource) => {
+      const userResource = userResources.find((item) => item.id === resource.id);
       userResource.amount -= resource.amount;
     });
     userFixture.buildings.push(id);
@@ -42,6 +46,5 @@ router.post('/me/buildings', async (req, res, next) => {
     return res.status(400).json(error(404, 'Bad Request'));
   }
 });
-
 
 export { router };

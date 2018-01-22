@@ -5,10 +5,9 @@ import * as morgan from 'morgan';
 
 import { useRoutes } from './modules/routes';
 
-const port = 3001;
+const port = 3000;
 const server = express();
 
-server.use(morgan('tiny'));
 server.use(cors());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));

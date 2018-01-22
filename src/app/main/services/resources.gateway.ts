@@ -22,8 +22,13 @@ export class ResourcesGateway extends Socket {
   }
 
   start() {
+    this.subscribeConnection();
     this.subscribeMessages();
     this.connect();
+  }
+
+  subscribeConnection() {
+    this.once('connect', () => this.emit('start'));
   }
 
   subscribeMessages() {

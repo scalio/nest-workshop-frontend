@@ -1,30 +1,30 @@
 export const resourcesFixture = [
   {
-    id: 0,
+    id: 1,
     name: 'Gold',
   },
   {
-    id: 1,
+    id: 2,
     name: 'Wood',
   },
   {
-    id: 2,
+    id: 3,
     name: 'Ore',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Sulfur',
   },
   {
-    id: 4,
+    id: 5,
     name: 'Gem',
   },
   {
-    id: 5,
+    id: 6,
     name: 'Crystal',
   },
   {
-    id: 6,
+    id: 7,
     name: 'Mercury',
   }
 ];

@@ -11,6 +11,9 @@ export const selectUserResources = createSelector(
   selectUser,
   selectResources,
   (user: UserState, resources: ResourcesState) => {
-    return map(user.resources, (resource) => merge(resource, resources[resource.id]));
+    return map(user.resources, (resource) => merge(
+      resource,
+      resources.find(res => res.id === resource.id),
+    ));
   },
 );

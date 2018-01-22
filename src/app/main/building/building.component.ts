@@ -18,6 +18,6 @@ export class BuildingComponent {
   }
 
   getResourceIconPath(name: string): string {
-    return `/assets/images/resources/${name.toLowerCase()}.png`;
+    return name ? `/assets/images/resources/${name.toLowerCase()}.png` : '';
   }
 }
