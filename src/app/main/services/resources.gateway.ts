@@ -40,6 +40,7 @@ export class ResourcesGateway extends Socket {
         ),
       )
       .switchMap(() => this.authService.fetchUserDetails())
+      .takeUntil(this.fromEvent('disconnect'))
       .publish()
       .connect();
   }

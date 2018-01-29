@@ -17,7 +17,7 @@ function handleConnection(socket) {
     socket.on('start', () => {
       const timer = setInterval(
         () => sendRandomResource(socket, (decoded as any).id),
-        10000,
+        3000,
       );
       connectedSockets[socket] = timer;
     });
