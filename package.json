@@ -4,8 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --sourcemap=false",
-    "start:dev": "concurrently \"npm run start\" \"npm run start-api\"",
+    "start": "ng serve",
+    "start:dev": "ng serve --sourcemap=false",
+    "start:mock": "concurrently \"npm run start:dev\" \"npm run start-api\"",
     "start-api": "node api/index.js",
     "start-api:watch": "nodemon -e ts --watch ./api api/index.js",
     "build": "ng build",
