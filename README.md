@@ -1,5 +1,9 @@
 # ngAtl FE - Nest workshop
 
+## Description
+
+Prebuilt front-end application for ngatl Nest workshop. Slides are available here: https://goo.gl/PiBCuL.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
 ## Development server
